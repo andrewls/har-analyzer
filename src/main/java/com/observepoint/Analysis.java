@@ -1,6 +1,7 @@
 package com.observepoint;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -47,7 +48,7 @@ public class Analysis {
     }
 
     public void addDataTransmissionInfo(double sent, double received) {
-        if (this.millisecondsElapsed != null) {
+        if (this.millisecondsElapsed != null && this.millisecondsElapsed != 0.0) {
             addDataTransmissionInfo(sent, received, this.millisecondsElapsed);
             return;
         }
@@ -136,5 +137,84 @@ public class Analysis {
 
     public Entry[] getFastestRequests() {
         return fastestRequests;
+    }
+
+    public void setBytesSent(Double bytesSent) {
+        this.bytesSent = bytesSent;
+    }
+
+    public void setBytesReceived(Double bytesReceived) {
+        this.bytesReceived = bytesReceived;
+    }
+
+    public void setMillisecondsElapsed(Double millisecondsElapsed) {
+        this.millisecondsElapsed = millisecondsElapsed;
+    }
+
+    public void setPercentageOfTimeBlocked(Double percentageOfTimeBlocked) {
+        this.percentageOfTimeBlocked = percentageOfTimeBlocked;
+    }
+
+    public void setPercentageOfTimeDns(Double percentageOfTimeDns) {
+        this.percentageOfTimeDns = percentageOfTimeDns;
+    }
+
+    public void setPercentageOfTimeConnecting(Double percentageOfTimeConnecting) {
+        this.percentageOfTimeConnecting = percentageOfTimeConnecting;
+    }
+
+    public void setPercentageOfTimeSending(Double percentageOfTimeSending) {
+        this.percentageOfTimeSending = percentageOfTimeSending;
+    }
+
+    public void setPercentageOfTimeWaiting(Double percentageOfTimeWaiting) {
+        this.percentageOfTimeWaiting = percentageOfTimeWaiting;
+    }
+
+    public void setPercentageOfTimeReceiving(Double percentageOfTimeReceiving) {
+        this.percentageOfTimeReceiving = percentageOfTimeReceiving;
+    }
+
+    public void setPercentageOfTimeSsl(Double percentageOfTimeSsl) {
+        this.percentageOfTimeSsl = percentageOfTimeSsl;
+    }
+
+    public void setAverageBytesUploadedPerSecond(Double averageBytesUploadedPerSecond) {
+        this.averageBytesUploadedPerSecond = averageBytesUploadedPerSecond;
+    }
+
+    public void setAverageBytesDownloadedPerSecond(Double averageBytesDownloadedPerSecond) {
+        this.averageBytesDownloadedPerSecond = averageBytesDownloadedPerSecond;
+    }
+
+    public void setSlowestRequests(Entry[] slowestRequests) {
+        this.slowestRequests = slowestRequests;
+    }
+
+    public void setFastestRequests(Entry[] fastestRequests) {
+        this.fastestRequests = fastestRequests;
+    }
+
+    @Override
+    public String toString() {
+        return "Analysis{" +
+                "NUM_REQUESTS_TO_SHOW=" + NUM_REQUESTS_TO_SHOW +
+                ", pagesRequested=" + pagesRequested +
+                ", httpRequestsMade=" + httpRequestsMade +
+                ", bytesSent=" + bytesSent +
+                ", bytesReceived=" + bytesReceived +
+                ", millisecondsElapsed=" + millisecondsElapsed +
+                ", percentageOfTimeBlocked=" + percentageOfTimeBlocked +
+                ", percentageOfTimeDns=" + percentageOfTimeDns +
+                ", percentageOfTimeConnecting=" + percentageOfTimeConnecting +
+                ", percentageOfTimeSending=" + percentageOfTimeSending +
+                ", percentageOfTimeWaiting=" + percentageOfTimeWaiting +
+                ", percentageOfTimeReceiving=" + percentageOfTimeReceiving +
+                ", percentageOfTimeSsl=" + percentageOfTimeSsl +
+                ", averageBytesUploadedPerSecond=" + averageBytesUploadedPerSecond +
+                ", averageBytesDownloadedPerSecond=" + averageBytesDownloadedPerSecond +
+                ", slowestRequests=" + Arrays.toString(slowestRequests) +
+                ", fastestRequests=" + Arrays.toString(fastestRequests) +
+                '}';
     }
 }

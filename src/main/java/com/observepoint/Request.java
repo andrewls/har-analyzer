@@ -6,17 +6,16 @@ package com.observepoint;
 public class Request {
     private String method;
     private String url;
-    private String httpVersion;
-    private Cookie[] cookies;
-    private Header[] headers;
-    private QueryParam[] queryString;
-    private PostData postData;
     private Double headerSize;
     private Double bodySize;
-    private String comment;
+
+    public Request() {
+        headerSize = 0.0;
+        bodySize = 0.0;
+    }
 
     public double totalSize() {
-        return (this.headerSize == null ? 0.0 : this.headerSize) + (this.bodySize == null ? 0.0 : this.bodySize);
+        return (this.headerSize == -1 ? 0.0 : this.headerSize) + (this.bodySize == -1 ? 0.0 : this.bodySize);
     }
 
     public String getMethod() {
@@ -35,46 +34,6 @@ public class Request {
         this.url = url;
     }
 
-    public String getHttpVersion() {
-        return httpVersion;
-    }
-
-    public void setHttpVersion(String httpVersion) {
-        this.httpVersion = httpVersion;
-    }
-
-    public Cookie[] getCookies() {
-        return cookies;
-    }
-
-    public void setCookies(Cookie[] cookies) {
-        this.cookies = cookies;
-    }
-
-    public Header[] getHeaders() {
-        return headers;
-    }
-
-    public void setHeaders(Header[] headers) {
-        this.headers = headers;
-    }
-
-    public QueryParam[] getQueryString() {
-        return queryString;
-    }
-
-    public void setQueryString(QueryParam[] queryString) {
-        this.queryString = queryString;
-    }
-
-    public PostData getPostData() {
-        return postData;
-    }
-
-    public void setPostData(PostData postData) {
-        this.postData = postData;
-    }
-
     public double getHeaderSize() {
         return headerSize;
     }
@@ -89,13 +48,5 @@ public class Request {
 
     public void setBodySize(double bodySize) {
         this.bodySize = bodySize;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 }

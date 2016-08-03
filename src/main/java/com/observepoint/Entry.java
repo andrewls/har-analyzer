@@ -4,32 +4,10 @@ package com.observepoint;
  * Created by andrew on 7/24/16.
  */
 public class Entry implements Comparable<Entry> {
-    private String pageref;
-    private String startedDateTime;
     private Double time;
     private Request request;
     private Response response;
-    private Cache cache;
     private Timing[] timings;
-    private String serverIPAddress;
-    private String connection;
-    private String comment;
-
-    public String getPageref() {
-        return pageref;
-    }
-
-    public void setPageref(String pageref) {
-        this.pageref = pageref;
-    }
-
-    public String getStartedDateTime() {
-        return startedDateTime;
-    }
-
-    public void setStartedDateTime(String startedDateTime) {
-        this.startedDateTime = startedDateTime;
-    }
 
     public Double getTime() {
         return time;
@@ -55,44 +33,12 @@ public class Entry implements Comparable<Entry> {
         this.response = response;
     }
 
-    public Cache getCache() {
-        return cache;
-    }
-
-    public void setCache(Cache cache) {
-        this.cache = cache;
-    }
-
     public Timing[] getTimings() {
         return timings;
     }
 
     public void setTimings(Timing[] timings) {
         this.timings = timings;
-    }
-
-    public String getServerIPAddress() {
-        return serverIPAddress;
-    }
-
-    public void setServerIPAddress(String serverIPAddress) {
-        this.serverIPAddress = serverIPAddress;
-    }
-
-    public String getConnection() {
-        return connection;
-    }
-
-    public void setConnection(String connection) {
-        this.connection = connection;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public Timing getTimingTotals() {

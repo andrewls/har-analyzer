@@ -1,5 +1,7 @@
 package com.observepoint;
 
+import org.omg.CORBA.portable.ApplicationException;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

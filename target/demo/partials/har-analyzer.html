@@ -1,0 +1,55 @@
+<h3 class="title">Type or paste HAR json into the box below, or upload a file using the file input button below</h3>
+<form>
+    <textarea class="form-control" placeholder="Type HAR JSON here" ng-model="har.json" ng-keypress="har.clearFiles()"></textarea>
+    <file-uploader file-input-changed="har.fileInputChanged"></file-uploader>
+    <button class="btn btn-primary" type="submit" ng-click="har.submit()">Analyze</button>
+</form>
+
+<div class="results container" ng-if="har.analysis">
+    <div class="row">
+        <div class="col-md-3 results-label">Total Bytes Received</div>
+        <div class="col-md-3 results-label">Average Bytes Downloaded Per Second</div>
+        <div class="col-md-3 results-label">Total Bytes Sent</div>
+        <div class=""col-md-3 results-label">Average Bytes Uploaded Per Second</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">{{har.analysis.bytesReceived}}</div>
+        <div class="col-md-3">{{har.analysis.averageBytesDownloadedPerSecond}}</div>
+        <div class="col-md-3">{{har.analysis.bytesSent}}</div>
+        <div class="col-md-3">{{har.analysis.averageBytesUploadedPerSecond}}</div>
+    </div>
+    <div class="row empty-row"></div>
+    <div class="row">
+        <div class="col-md-3 results-label">Pages Requested</div>
+        <div class="col-md-3 results-label">Total # of Http Requests</div>
+        <div class="col-md-3 results-label">Time Elapsed (ms)</div>
+        <div class="col-md-3 results-label">Timing Breakdown</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">{{har.analysis.pagesRequested}}</div>
+        <div class="col-md-3">{{har.analysis.httpRequestsMade}}</div>
+        <div class="col-md-3">{{Math.round(har.analysis.millisecondsElapsed * 100) / 100}}</div>
+        <div class="col-md-3">
+            <div class="timing-breakdown">Blocked: {{Math.round(har.analysis.percentageOfTimeBlocked * 100)}}</div>
+            <div class="timing-breakdown">DNS: {{Math.round(har.analysis.percentageOfTimeDns * 100)}}</div>
+            <div class="timing-breakdown">Connecting: {{Math.round(har.analysis.percentageOfTimeConnecting * 100)}}</div>
+            <div class="timing-breakdown">Sending: {{Math.round(har.analysis.percentageOfTimeSending * 100)}}</div>
+            <div class="timing-breakdown">Waiting: {{Math.round(har.analysis.percentageOfTimeWaiting * 100)}}</div>
+            <div class="timing-breakdown">Receiving: {{Math.round(har.analysis.percentageOfTimeReceiving * 100)}}</div>
+            <div class="timing-breakdown">SSL: {{Math.round(har.analysis.percentageOfTimeSsl * 100)}}</div>
+        </div>
+    </div>
+    <div class="row empty-row"></div>
+    <div class="row">
+        <div class="col-md-6 results-label">Fastest Requests</div>
+        <div class="col-md-6 results-label">Slowest Requests</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div ng-repeat="request in har.analysis.fastestRequests">{{request.time}} ms - {{request.request.method}} to {{request.request.url}}</div>
+        </div>
+        <div class="col-md-6">
+            <div ng-repeat="request in har.analysis.slowestRequests">{{request.time}} ms - {{request.request.method}} to {{request.request.url}}</div>
+        </div>
+    </div>
+</div>

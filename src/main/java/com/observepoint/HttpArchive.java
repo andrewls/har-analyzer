@@ -15,6 +15,6 @@ public class HttpArchive {
     }
 
     public Analysis analyze() {
-        return log.analyze();
+        return log != null ? log.analyze() : null;
     }
 }

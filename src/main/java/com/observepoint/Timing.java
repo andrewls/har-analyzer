@@ -22,9 +22,11 @@ public class Timing {
         wait = 0.0;
         receive = 0.0;
         ssl = 0.0;
-        total = 0.0;
     }
     public static Timing merge(Timing... timings) {
+        System.out.println("Printing timings to merge: ");
+        System.out.print("\t");
+        System.out.println(timings);
         if (timings == null) return null;
         Timing toReturn = new Timing();
         for (Timing timing: timings) {
@@ -144,5 +146,20 @@ public class Timing {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Timing{" +
+                "blocked=" + blocked +
+                ", dns=" + dns +
+                ", connect=" + connect +
+                ", send=" + send +
+                ", wait=" + wait +
+                ", receive=" + receive +
+                ", ssl=" + ssl +
+                ", comment='" + comment + '\'' +
+                ", total=" + total +
+                '}';
     }
 }
