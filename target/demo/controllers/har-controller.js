@@ -9,7 +9,7 @@ angular.module('harAnalyzer.controllers', ['harAnalyzer.services'])
     har.submit = function() {
         if (har.json) {
             ApiService.analyzeHarJson(har.json).then(function(response) {
-                har.analysis = response;
+                har.analysis = response.data;
                 console.log("Analysis was set to", response.data);
             }, function() {
                 alert("There was an error posting the data!");
