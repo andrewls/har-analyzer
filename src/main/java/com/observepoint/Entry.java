@@ -1,5 +1,8 @@
 package com.observepoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by andrew on 7/24/16.
  */
@@ -42,7 +45,13 @@ public class Entry implements Comparable<Entry> {
     }
 
     public Timing getTimingTotals() {
-        return Timing.merge(timings);
+        List<Timing> timingsList = new ArrayList<>(timings.length + 1);
+        timingsList.add(new Timing());
+        for (Timing timing: timings) {
+            timingsList.add(timing);
+        }
+        Timing[] timingsArray = new Timing[timingsList.size()];
+        return Timing.merge(timingsList.toArray(timingsArray));
     }
 
     public double getBytesSent() {

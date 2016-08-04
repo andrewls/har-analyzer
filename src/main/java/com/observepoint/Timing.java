@@ -27,16 +27,16 @@ public class Timing {
         System.out.println("Printing timings to merge: ");
         System.out.print("\t");
         System.out.println(timings);
-        if (timings == null) return null;
+        if (timings == null) return new Timing();
         Timing toReturn = new Timing();
         for (Timing timing: timings) {
-            toReturn.blocked += timing.blocked;
-            toReturn.dns += timing.dns;
-            toReturn.connect += timing.connect;
-            toReturn.send += timing.send;
-            toReturn.wait += timing.wait;
-            toReturn.receive += timing.receive;
-            toReturn.ssl += timing.ssl;
+            if (timing.blocked != null && timing.blocked >= 0) toReturn.blocked += timing.blocked;
+            if (timing.dns != null && timing.dns >= 0) toReturn.dns += timing.dns;
+            if (timing.connect != null && timing.connect >= 0) toReturn.connect += timing.connect;
+            if (timing.send != null && timing.send >= 0) toReturn.send += timing.send;
+            if (timing.wait != null && timing.wait >= 0) toReturn.wait += timing.wait;
+            if (timing.receive != null && timing.receive >= 0) toReturn.receive += timing.receive;
+            if (timing.ssl != null && timing.ssl >= 0) toReturn.ssl += timing.ssl;
         }
         toReturn.getTotal(); // update the total time once at the end instead of at each iteration
         return toReturn;

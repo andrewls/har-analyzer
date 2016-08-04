@@ -1,9 +1,30 @@
-body {
-    max-width: 1000px;
+body.angular-app {
+    max-width: 1200px;
     margin: auto;
 }
 
 .title {
     text-align: center
+}
+
+.results-label {
+    font-weight: bold;
+}
+
+.row-empty {
+    padding: 40px;
+}
+
+.loading-modal {
+    position: absolute;
+    top: 400px;
+    left: calc(50% - 300px);
+    width: 600px;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 3px;
+    font-size: 20pt;
+    text-align: center;
+    padding: 20px;
 }
 

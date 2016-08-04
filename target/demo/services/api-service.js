@@ -5,14 +5,17 @@ angular.module('harAnalyzer.services', [])
     .service('ApiService', ['$http', '$q', function($http, $q) {
         // normally I would use $resource instead of $http and $q, but where it's just one request, it seems like overkill
         var service = {};
+        console.log("Defining service");
 
         service.analyzeHarJson = function(json) {
+            console.log("Analyzing json");
             var deferred = $q.defer();
             $http.post('webapi/http-archive', json).then(deferred.resolve, deferred.reject);
             return deferred.promise;
         };
 
         service.analyzeHarFile = function(file) {
+            console.log("Analyzing file");
             var deferred = $q.defer();
             // Check for the various File API support.
             if (window.File && window.FileReader && window.FileList && window.Blob) {
